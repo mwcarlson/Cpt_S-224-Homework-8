@@ -11,7 +11,10 @@ func handleConnection(c net.Conn)
 {
 	// Copy up to 128 bytes from the connection to the screen.
 	io.CopyN(os.Stdout, c, 128)
-	fmt.Fprintf(con, "%s\n", time.Now().String())
+	for range time.Tick(time.Second)
+	{
+		fmt.Fprintf(con, "%s\n", time.Now().String())
+	}
 }
 
 func main() 

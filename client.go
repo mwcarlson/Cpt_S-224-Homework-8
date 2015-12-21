@@ -7,12 +7,10 @@ import
 	"bufio"
 )
 
-func main() 
-{
+func main() {
 	// connect to 'localhost' on port '7778'
 	con, err := net.Dial("tcp", "localhost:7778")
-	if err != nil 
-	{
+	if err != nil {
 		panic(err)
 	}
 
@@ -21,8 +19,7 @@ func main()
 	
 	// read out the information sent to the screen 
 	scan := bufio.NewScanner(con)
-	for scan.Scan()
-	{
+	for scan.Scan() {
 		fmt.Println(scan.Text())	
 	}
 

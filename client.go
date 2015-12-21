@@ -4,6 +4,7 @@ import
 (
 	"fmt"
 	"net"
+	"bufio"
 )
 
 func main() 
@@ -15,10 +16,17 @@ func main()
 		panic(err)
 	}
 
-	// Write a message
+	// write a message
 	fmt.Fprintf(con, "Hello Internet!")
+	
+	// read out the information sent to the screen 
+	scan := bufio.NewScanner(con)
+	for scan.Scan()
+	{
+		fmt.Println(scan.Text())	
+	}
 
-	// Close the connection
+	// close the connection
 	con.Close()
 }
 

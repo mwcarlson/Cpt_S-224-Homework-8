@@ -15,7 +15,7 @@ func handleConnection(c net.Conn)
 func main() 
 {
 	// listen for connections on port 5555
-	list, err := net.Listen("tcp", ":5555")
+	list, err := net.Listen("tcp", "localhost:7778")
 	if err != nil 
 	{
 		// If others are using the same computer

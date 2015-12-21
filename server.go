@@ -9,8 +9,11 @@ import
 
 func handleConnection(c net.Conn) 
 {
-	// Copy up to 128 bytes from the connection to the screen.
+	// copy up to 128 bytes from the connection to the screen
 	io.CopyN(os.Stdout, c, 128)
+	// print out client's IP address
+	fmt.Fprintf(con, "%s\n", con.RemoteAddr().String())
+	// print out the current time every second
 	for range time.Tick(time.Second)
 	{
 		fmt.Fprintf(con, "%s\n", time.Now().String())
@@ -23,7 +26,7 @@ func main()
 	list, err := net.Listen("tcp", ":7778")
 	if err != nil 
 	{
-		// If others are using the same computer
+		// if others are using the same computer
 		// you might want to change the port
 		panic(err)
 	}
